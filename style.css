@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Lexend+Deca:wght@100..900&display=swap");
+:root {
+  --lightblue-very: #f3f7f9;
+  --lightblue: #c9e7e5;
+  --blue: #20b2aa;
+  --darkblue: #50abab;
+  --lightblue-white: #e3f4f2;
+  --silver: #a9a9a9;
+  --darkgrey: #575656;
+  --font-family: "Figtree", sans-serif;
+  --bold-md: 600;
+  --bold-lg: 800;
+  --radius: 5px;
+  --font-size: 17px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.card[data-featured="true"] {
+  border-left: 5px solid var(--blue);
+}
+
+pre {
+  color: var(--silver);
+  font-size: 15px;
+}
+
+.card {
+  border: 1px solid whitesmoke;
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  box-shadow: 1px 5px 10px 1px var(--lightblue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background-color: white;
+}
+
+.card-content {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+}
+
+.close {
+  display: none !important;
+}
+
+.company-name {
+  color: var(--blue);
+  text-transform: capitalize;
+  font-weight: var(--bold-md);
+  margin-right: 7px;
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1;
+  position: absolute;
+  top: 200px;
+  padding: 30px;
+}
+
+.filter {
+  border: 1px solid whitesmoke;
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  box-shadow: 1px 5px 10px 1px var(--lightblue);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 30px;
+  width: 80%;
+  transform: translateY(-201px);
+  z-index: 1;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+.filters span {
+  font-weight: var(--bold-md);
+  color: var(--blue);
+  background-color: var(--lightblue);
+  border-radius: 3px;
+  padding: 6px;
+}
+
+.filters span:hover {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: white;
+}
+
+.img-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: var(--darkblue);
+}
+
+.img-container img {
+  width: 100%;
+}
+
+.Job-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.Job-details div {
+  display: flex;
+  gap: 10px;
+}
+
+.job-name {
+  font-size: var(--font-size);
+  font-weight: var(--bold-lg);
+  text-transform: capitalize;
+}
+
+.job-name:hover {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.remove-filters {
+  color: var(--darkgrey);
+}
+
+.remove-filters:hover {
+  color: var(--blue);
+  text-decoration: underline var(--blue);
+  cursor: pointer;
+}
+
+.Selected-filters div {
+  font-weight: var(--bold-md);
+  color: var(--blue);
+  background-color: var(--lightblue);
+  border-radius: 3px;
+  padding: 5px 0px 5px 5px;
+  overflow: hidden;
+}
+
+.Selected-filters div span:nth-child(1) {
+  padding: 0px 3px;
+}
+
+.Selected-filters div span:nth-child(2) {
+  color: white;
+  background-color: var(--blue);
+  padding: 5px 7px;
+}
+
+.Selected-filters div span:nth-child(2):hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.Selected-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+[data-featured="false"] .featured {
+  display: none;
+}
+
+[data-featured="true"] .featured {
+  background-color: black;
+}
+
+[data-new="false"] .new {
+  display: none;
+}
+
+[data-new="true"] .new,
+[data-featured="true"] .featured {
+  font-size: 13px;
+  color: white;
+  padding: 4px 5px 3px 5px;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+[data-new="true"] .new {
+  background-color: var(--blue);
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--lightblue-white);
+  font-family: var(--font-family);
+  font-weight: var(--bold-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 0;
+  }
+
+  .card-content {
+    flex-direction: column;
+    align-items: start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--silver);
+    width: 100%;
+  }
+
+  .card-content img {
+    margin-top: -30px;
+    width: 60px;
+  }
+
+  .container {
+    gap: 50px;
+  }
+
+  .filters {
+    justify-content: start;
+  }
+
+  .img-container img {
+    height: 100px;
+  }
+}
