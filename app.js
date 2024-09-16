@@ -2,26 +2,20 @@ import { data } from "./data.js";
 
 
 export const app = {
-    filtersHolder : document.getElementById("filters-holder"),
+    filtersHolder : document.getElementById("filters-holder"), 
     jobCardsHolder : document.getElementById("job-cards-holder"),
     clearFiltersButton: document.getElementById('clear-filter'),
     selectedFilters: [],
     OnInit: function() {
         for(let job of data){
-            this.appendCard(job);
+            this.appendCard(job);                
         }
     },
     appendFilter: function(input) {
         if(this.selectedFilters.includes(input))
             return;
-        this.jobCardsHolder.innerHTML = '';
         this.selectedFilters.push(input);
-        for(let job of data) {
-            if([...job.languages, ...job.tools, job.level, job.role].includes(input))
-                this.appendCard(job)
-        }
-        
-        this.filtersHolder.innerHTML = ''
+        this.updateJobCardHolder();  
         let filterTag = document.createElement('div');
         filterTag.innerHTML = `<span>${input}</span>`
     
@@ -34,6 +28,20 @@ export const app = {
     
         this.filtersHolder.appendChild(filterTag);
     },
+    isMatch:function(card){
+      let cardFilter=[...card.languages,...card.tools,card.level,card.role];
+      return this.selectedFilters.every(ele=>cardFilter.includes(ele));
+    },
+
+    updateJobCardHolder:function(){
+      this.jobCardsHolder.innerHTML = '';
+        for(let job of data){
+          if(this.isMatch(job))this.appendCard(job);
+        }
+       
+    },
+    
+
     removeFilter: function(input) {
         console.log(input);
     },
@@ -55,12 +63,12 @@ export const app = {
                     </div>
                   </div>`;
           
-            let filters = document.createElement("div.filters");
+            let filters = document.createElement("div"); 
             filters.className = "filters";
           
             for (let filter of [...job.languages, ...job.tools, job.role, job.level]) {
-              let filterTag = document.createElement("span");
-              filterTag.innerHTML = filter;
+              let filterTag = document.createElement("span");    
+              filterTag.innerHTML = filter;          
               filterTag.addEventListener("click", () => {
                 this.appendFilter(filter);
               });
