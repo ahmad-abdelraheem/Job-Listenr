@@ -80,8 +80,8 @@ pre {
   align-items: center;
   padding: 20px 20px 20px 30px;
   width: 80%;
-  transform: translateY(-201px);
-  z-index: 1;
+  transform: translateY(-380px);
+  z-index:2;
 }
 
 .filters {
